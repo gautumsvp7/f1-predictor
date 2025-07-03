@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-
+from preprocess import preprocess_input_data
 # Load model and encoders
 model = joblib.load("xgb_model.pkl")
 # team_encoder = joblib.load("team_encoder.pkl")
@@ -13,7 +13,8 @@ uploaded_file = st.file_uploader("Upload test race data (CSV)", type=["csv"])
 
 if uploaded_file:
     test_data = pd.read_csv(uploaded_file)
-
+    # preprocess_input_data(test_data)
+    
     # Encode categorical features
     # test_data['Team'] = team_encoder.transform(test_data['Team'])
     # test_data['Compound'] = compound_encoder.transform(test_data['Compound'])
